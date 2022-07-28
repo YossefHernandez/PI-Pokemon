@@ -6,16 +6,17 @@ module.exports = (sequelize) => {
   sequelize.define('pokemon', {
     id: {
       type: DataTypes.UUID,
-      allowNull: false,
-      primaryKey: true,
-      defaultValue: DataTypes.UUIDV4
+        defaultValue: DataTypes.UUIDV4,
+        unique: true,
+        allowNull: false,
+        primaryKey: true,
     },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true
     },
-    health:{
+    hp:{
       type: DataTypes.INTEGER,
       allowNull: false
     },
@@ -27,7 +28,7 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    velocity:{
+    speed:{
       type: DataTypes.INTEGER,
       allowNull: false
     },
@@ -46,5 +47,7 @@ module.exports = (sequelize) => {
       type: DataTypes.BOOLEAN,
       defaultValue: true
     }
-  });
+  },
+  {timestamps: false}
+  );
 };
